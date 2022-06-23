@@ -4,7 +4,6 @@ const nodemailer = require("nodemailer");
 
 exports.form_create = function (req, res, next) {
   const data = req.body;
-
   let contact_form = new ContactForm({
     name: data.name,
     email: data.email,
@@ -14,9 +13,7 @@ exports.form_create = function (req, res, next) {
 
   const gmail_usr = process.env.GMAIL_USERNAME;
   const gmail_pass = process.env.GMAIL_PASSWORD;
-
   const transporter = nodemailer.createTransport({
-    
     service: "gmail",
     auth: {
       user: `${gmail_usr}`,
@@ -34,17 +31,11 @@ exports.form_create = function (req, res, next) {
          <hr>
          <br>
          <h5 style="color:black" >Name: ${data.name}<h5/>
-    
-            <h5 style="color:black" >Email: ${data.email}<h5/>
-     
-            <h5 style="color:black" >Subject: ${data.subject}<h5/>
-    
-            <h5 style="color:black" >Message: ${data.message}<h5/>
-          
-           
-            </div>
-         
-            </div>
+  <h5 style="color:black" >Email: ${data.email}<h5/>
+  <h5 style="color:black" >Subject: ${data.subject}<h5/>
+ <h5 style="color:black" >Message: ${data.message}<h5/>
+  </div>
+  </div>
             `,
   };
 

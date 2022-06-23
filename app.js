@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const cors = require('cors')
-const bodyParser = require('body-parser')
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const express = require("express");
 const router = express.Router();
@@ -12,7 +12,6 @@ const app = express();
 
 app.use(cors());
 
-
 app.use(bodyParser.json());
 
 app.use(
@@ -20,13 +19,13 @@ app.use(
     extended: true,
   })
 );
-app.use('/resumes', express.static('resumes'));
+app.use("/resumes", express.static("resumes"));
 
 //DB Connection
 
 mongoose.connect(
   process.env.MONGODB_DB,
- 
+
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
@@ -36,9 +35,6 @@ db.on(
   "error",
   console.error.bind(console.log("db connected"), "MongoDB connection Error")
 );
-
-
-
 
 app.use("/contactform", form);
 app.use("/jobform", jobform);
